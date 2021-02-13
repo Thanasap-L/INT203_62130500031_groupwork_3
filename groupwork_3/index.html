@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Groupwork3</title>
+
+    <!-- https://google.github.io/material-design-icons/#icon-font-for-the-web -->
+    <!-- Using via Google Web Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+    <!-- https://tailwindcss.com/docs/installation -->
+    <!-- Using Tailwind via CDN -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+
+    <!-- https://v3.vuejs.org/guide/installation.html#release-notes -->
+    <!-- Vue CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <h1 class="text-xl text-center pt-5">Photo Gallery ( {{ count }} )</h1>
+        <section class="overflow-hidden text-gray-700 body-font">
+            <div class="container px-5 py-2 mx-auto lg:px-32">
+                <div class="flex flex-wrap justify-center mx-auto ">
+                    <div v-for="(image,index) in img" class="w-full mt-6 lg:w-2/4 lg:pl-10 lg:py-6 lg:mt-0">
+                        <img alt="image" class="object-cover object-center w-full h-64 rounded-lg lg:h-auto" v-bind:src="image.url">
+                        <div class="flex flex-col items-start mx-auto mt-8 sm:flex-row sm:items-center">
+                            <h1 class="flex-grow mb-2 text-2xl font-medium tracking-tighter text-gray-900 title-font">{{image.text}}</h1>
+                            <svg v-show="image.fav" :xmlns="svg" class="mx-auto fill-current text-red-600 mr-5" width="40" height="40" viewBox="0 0 24 24">
+                                <path d="M18 1l-6 4-6-4-6 5v7l12 10 12-10v-7z"/></svg>
+                            <button
+                                class="flex-shrink-0 px-4 py-2 mt-10 font-semibold text-white transition duration-500 ease-in-out transform rounded-lg 
+                                sm:mt-0 bg-gradient-to-r from-blue-700 hover:from-blue-600 to-blue-600 hover:to-blue-700 hover:-translate-y-1 
+                                hover:scale-110 focus:shadow-outline focus:outline-none" @click="likeImg(index)">Like</button>     
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- my main.js -->
+    <script src="./main.js"></script>
+</body>
+
+</html>
